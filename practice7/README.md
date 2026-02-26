@@ -18,4 +18,4 @@
 - [x] Футер содержит контакты и соцсети
 
 ## Ссылка на проект
-[GitHub Pages](https://0toxich0.github.io/practice1-8/practice7/)
+[GitHub Pages](https://0toxich0.github.io/practice1-12/practice7/)

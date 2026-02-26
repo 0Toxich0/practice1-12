@@ -9,4 +9,4 @@
 - Методологии организации CSS
 
 ## Ссылка на проект
-[GitHub Pages](https://0toxich0.github.io/practice1-8/practice3/)
+[GitHub Pages](https://0toxich0.github.io/practice1-12/practice3/)

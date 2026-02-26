@@ -7,4 +7,4 @@
 4. **Файл отчёта:** пр11 Манипуляции с DOM и навигация по элементам.pdf
 
 ## Ссылка на проект
-[GitHub Pages](https://0toxich0.github.io/practice1-8/practice11/)
+[GitHub Pages](https://0toxich0.github.io/practice1-12/practice11/)
