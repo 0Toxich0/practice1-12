@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическое занятие 12</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;
+        background-color: white;
+        color: black;
+    }
+
+        body.dark-theme {
+        background-color: #121212;
+        color: #f0f0f0;
+    }
+    
+    body.dark-theme .task {
+        background-color: #1e1e1e;
+        border-color: #bb86fc;
+    }
+
+    body.dark-theme .task h2 {
+        color: #bb86fc;
+    }
+
+    body.dark-theme button {
+        background-color: #bb86fc;
+        color: #000;
+    }
+    body.dark-theme button:hover {
+        background-color: #9b67e0;
+    }
+
+    body.dark-theme a {
+        color: #bb86fc;
+    }
+
+    body.dark-theme input {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #555;
+    }
+
+    body.dark-theme #taskList li {
+        background-color: #2a2a2a;
+        color: #eee;
+    }
+
+    body.dark-theme .box {
+        background-color: #bb86fc;
+    }
+
+    body.dark-theme .report-link {
+        background-color: #bb86fc;
+        color: #000;
+    }
+    body.dark-theme .report-link:hover {
+        background-color: #9b67e0;
+    }
+
+    .task {
+        border: 2px solid #007BFF;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .task h2 {
+        margin-top: 0;
+        color: #007BFF;
+    }
+
+    button, input {
+        padding: 8px 16px;
+        margin: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: #007BFF;
+        margin: 10px 0;
+        transition: width 0.2s, height 0.2s, background-color 0.3s;
+    }
+
+    #taskList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #taskList li {
+        background: #e9ecef;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+    .report-link {
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 18px;
+        text-decoration: none;
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .report-link:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+<body>
+    <h1>Практическое занятие 12: Обработка событий в JavaScript</h1>
+    <p>Все задания выполнены на одной странице. Ниже каждый блок соответствует заданию из методички.</p>
+
+    <a class="report-link" href="пр12 Обработка событий в JavaScript.pdf" target="_blank">📄 Открыть отчёт по работе</a>
+
+    <div class="task">
+        <h2>Задание №1: Счётчик кликов</h2>
+        <p>Счётчик: <span id="counterDisplay">0</span></p>
+        <button id="counterBtn">Нажми меня</button>
+        <p><em>Кликните на кнопку, чтобы увеличить счётчик.</em></p>
+    </div>
+
+    <div class="task">
+        <h2>Задание №2: Приветствие</h2>
+        <input type="text" id="nameInput" placeholder="Введите имя">
+        <button id="greetBtn">Привет</button>
+        <p id="greetingMessage"></p>
+    </div>
+
+    <div class="task">
+        <h2>Задание №3: Переключатель темы</h2>
+        <button id="themeToggle">Сменить тему</button>
+        <p>Нажмите, чтобы переключить светлую/тёмную тему всей страницы. Текст всегда остаётся читаемым.</p>
+    </div>
+
+    <div class="task">
+        <h2>Задание №4: Список дел</h2>
+        <input type="text" id="taskInput" placeholder="Новая задача">
+        <button id="addTaskBtn">Добавить</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <div class="task">
+        <h2>Задание №5: Управление размером</h2>
+        <div id="box" class="box"></div>
+        <button id="increaseBtn">+</button>
+        <button id="decreaseBtn">-</button>
+    </div>
+
+    <script>
+        (function() {
+            let counter = 0;
+            const counterDisplay = document.getElementById('counterDisplay');
+            const counterBtn = document.getElementById('counterBtn');
+
+            if (counterBtn) {
+                counterBtn.addEventListener('click', () => {
+                    counter++;
+                    counterDisplay.textContent = counter;
+                });
+            }
+        })();
+
+        (function() {
+            const nameInput = document.getElementById('nameInput');
+            const greetBtn = document.getElementById('greetBtn');
+            const greetingMessage = document.getElementById('greetingMessage');
+
+            if (greetBtn) {
+                greetBtn.addEventListener('click', () => {
+                    const name = nameInput.value.trim();
+                    if (name) {
+                        greetingMessage.textContent = `Привет, ${name}!`;
+                    } else {
+                        greetingMessage.textContent = '';
+                    }
+                });
+            }
+        })();
+
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-theme');
+                });
+            }
+        })();
+
+        (function() {
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+
+            if (addTaskBtn) {
+                addTaskBtn.addEventListener('click', () => {
+                    const taskText = taskInput.value.trim();
+                    if (taskText) {
+                        const li = document.createElement('li');
+                        li.textContent = taskText;
+                        taskList.appendChild(li);
+                        taskInput.value = ''; 
+                    } else {
+                        alert('Введите текст задачи');
+                    }
+                });
+            }
+        })();
+
+        (function() {
+            const box = document.getElementById('box');
+            const increaseBtn = document.getElementById('increaseBtn');
+            const decreaseBtn = document.getElementById('decreaseBtn');
+
+            if (box) {
+                box.style.width = '100px';
+                box.style.height = '100px';
+            }
+
+            if (increaseBtn) {
+                increaseBtn.addEventListener('click', () => {
+                    let currentWidth = parseInt(box.style.width) || 100;
+                    let newSize = currentWidth + 10;
+                    box.style.width = newSize + 'px';
+                    box.style.height = newSize + 'px';
+                });
+            }
+
+            if (decreaseBtn) {
+                decreaseBtn.addEventListener('click', () => {
+                    let currentWidth = parseInt(box.style.width) || 100;
+                    if (currentWidth > 20) {
+                        let newSize = currentWidth - 10;
+                        box.style.width = newSize + 'px';
+                        box.style.height = newSize + 'px';
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
